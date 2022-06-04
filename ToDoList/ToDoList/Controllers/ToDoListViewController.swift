@@ -21,7 +21,7 @@ class ToDoListViewController: UIViewController {
         configure()
     }
 
-    private func configure(){
+    private func configure() {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         view.addSubview(toDoListTable)
@@ -34,7 +34,7 @@ class ToDoListViewController: UIViewController {
     }
     
 //MARK: - Constrainsts
-    private func makeTitleLabelConstrainsts(){
+    private func makeTitleLabelConstrainsts() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
             make.centerX.equalTo(view.center.x)
@@ -42,7 +42,7 @@ class ToDoListViewController: UIViewController {
         }
     }
     
-    private func makeToDoListTableConstrainsts(){
+    private func makeToDoListTableConstrainsts() {
         toDoListTable.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).offset(48)
             make.right.left.equalToSuperview()
@@ -50,7 +50,7 @@ class ToDoListViewController: UIViewController {
         }
     }
     
-    private func makeCreateToDoButtonConstrainsts(){
+    private func makeCreateToDoButtonConstrainsts() {
         createToDoButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalToSuperview()
@@ -58,7 +58,7 @@ class ToDoListViewController: UIViewController {
         }
     }
     
-    private func configureDesign(){
+    private func configureDesign() {
         view.backgroundColor = .lightGray
 
         buttonDesign()
@@ -67,7 +67,7 @@ class ToDoListViewController: UIViewController {
     }
     
 //MARK: - Design
-    private func buttonDesign(){
+    private func buttonDesign() {
         createToDoButton.backgroundColor = .lightGray
         //alignment
         createToDoButton.contentHorizontalAlignment = .left
@@ -82,17 +82,16 @@ class ToDoListViewController: UIViewController {
         createToDoButton.imageView?.tintColor = .systemIndigo
     }
     
-    private func tableViewDesign(){
+    private func tableViewDesign() {
         toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
     }
     
-    private func titleLabelDesign(){
+    private func titleLabelDesign() {
         titleLabel.text = "To Do List"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
         titleLabel.textColor = .systemIndigo
     }
-
 }
 
 //MARK: ~EXTENSİONS
