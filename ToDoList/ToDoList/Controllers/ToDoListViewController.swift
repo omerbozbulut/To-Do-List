@@ -13,6 +13,7 @@ class ToDoListViewController: UIViewController {
     private let titleLabel = UILabel()
     private let toDoListTable = UITableView()
     private let createToDoButton = UIButton()
+    private let toDoLogic = ToDoLogic()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,8 @@ class ToDoListViewController: UIViewController {
     }
     
     private func tableViewDesign() {
+        
+        toDoListTable.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 222/255, alpha: 1.0)
         toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
     }
     
@@ -95,13 +98,21 @@ class ToDoListViewController: UIViewController {
 }
 
 //MARK: ~EXTENSİONS
-extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource{
+extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if let count = toDoLogic.getToDos()?.count {
+            return count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellIdentifier, for: indexPath)
+        guard let toDos = toDoLogic.getToDos() else {return UITableViewCell()}
+        let toDo = toDos[indexPath.row]
+        cell.textLabel?.text = toDo.title
+        cell.detailTextLabel?.text = toDo.description
+        cell.selectionStyle = .none
         return cell
     }
 }

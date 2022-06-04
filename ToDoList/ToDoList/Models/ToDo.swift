@@ -8,10 +8,15 @@
 import Foundation
 
 struct ToDo: Codable{
-    private let title: String
-    private let description: String
-    private let date: NSDate
-    private let completed: Bool
-  
+    let title: String
+    let description: String
+    //private let date: Date
+    let completed: Bool
     
+    init(title:String, description: String, completed:Bool) {
+        self.title = title
+        self.description = description
+        self.completed = completed
+    }
 }
+
