@@ -7,19 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1760FD8428481148000C9B60 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1760FD8328481148000C9B60 /* SnapKit */; };
 		1776F1672847FF8E00DC0C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F1662847FF8E00DC0C85 /* AppDelegate.swift */; };
 		1776F1692847FF8E00DC0C85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F1682847FF8E00DC0C85 /* SceneDelegate.swift */; };
-		1776F16B2847FF8E00DC0C85 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F16A2847FF8E00DC0C85 /* ViewController.swift */; };
+		1776F16B2847FF8E00DC0C85 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F16A2847FF8E00DC0C85 /* ToDoListViewController.swift */; };
 		1776F16E2847FF8E00DC0C85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1776F16C2847FF8E00DC0C85 /* Main.storyboard */; };
 		1776F1702847FF8F00DC0C85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1776F16F2847FF8F00DC0C85 /* Assets.xcassets */; };
 		1776F1732847FF8F00DC0C85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1776F1712847FF8F00DC0C85 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1760FD8128481078000C9B60 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1776F1632847FF8E00DC0C85 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1776F1662847FF8E00DC0C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1776F1682847FF8E00DC0C85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1776F16A2847FF8E00DC0C85 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1776F16A2847FF8E00DC0C85 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		1776F16D2847FF8E00DC0C85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1776F16F2847FF8F00DC0C85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1776F1722847FF8F00DC0C85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1760FD8428481148000C9B60 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +73,7 @@
 			children = (
 				1776F1662847FF8E00DC0C85 /* AppDelegate.swift */,
 				1776F1682847FF8E00DC0C85 /* SceneDelegate.swift */,
-				1776F16A2847FF8E00DC0C85 /* ViewController.swift */,
+				1776F16A2847FF8E00DC0C85 /* ToDoListViewController.swift */,
 				1776F16C2847FF8E00DC0C85 /* Main.storyboard */,
 				1776F16F2847FF8F00DC0C85 /* Assets.xcassets */,
 				1776F1712847FF8F00DC0C85 /* LaunchScreen.storyboard */,
@@ -77,12 +92,16 @@
 				1776F15F2847FF8E00DC0C85 /* Sources */,
 				1776F1602847FF8E00DC0C85 /* Frameworks */,
 				1776F1612847FF8E00DC0C85 /* Resources */,
+				1760FD8128481078000C9B60 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ToDoList;
+			packageProductDependencies = (
+				1760FD8328481148000C9B60 /* SnapKit */,
+			);
 			productName = ToDoList;
 			productReference = 1776F1632847FF8E00DC0C85 /* ToDoList.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,9 @@
 				Base,
 			);
 			mainGroup = 1776F15A2847FF8E00DC0C85;
+			packageReferences = (
+				1760FD8228481148000C9B60 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 1776F1642847FF8E00DC0C85 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1776F16B2847FF8E00DC0C85 /* ViewController.swift in Sources */,
+				1776F16B2847FF8E00DC0C85 /* ToDoListViewController.swift in Sources */,
 				1776F1672847FF8E00DC0C85 /* AppDelegate.swift in Sources */,
 				1776F1692847FF8E00DC0C85 /* SceneDelegate.swift in Sources */,
 			);
@@ -303,7 +325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omerbozbulut.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -333,7 +355,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.0.1;
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.omerbozbulut.ToDoList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -364,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1760FD8228481148000C9B60 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1760FD8328481148000C9B60 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1760FD8228481148000C9B60 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1776F15B2847FF8E00DC0C85 /* Project object */;
 }
