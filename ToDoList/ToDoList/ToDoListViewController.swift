@@ -74,22 +74,22 @@ class ToDoListViewController: UIViewController {
         createToDoButton.contentVerticalAlignment = .center
         //title
         createToDoButton.setTitleColor(.systemIndigo, for: .normal)
-        createToDoButton.titleLabel?.font = UIFont(name: "HelveticaNeue-medium", size: 20)
+        createToDoButton.titleLabel?.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)
         createToDoButton.setTitle("New to do", for: .normal)
         //image
-        createToDoButton.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        createToDoButton.setImage(UIImage(systemName: Constants.buttonImageName), for: .normal)
         createToDoButton.setInsets(forContentPadding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), imageTitlePadding: 15)
-        
+        createToDoButton.imageView?.tintColor = .systemIndigo
     }
     
     private func tableViewDesign(){
-        toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
     }
     
     private func titleLabelDesign(){
         titleLabel.text = "To Do List"
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 25)
+        titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
         titleLabel.textColor = .systemIndigo
     }
 
@@ -102,7 +102,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellIdentifier, for: indexPath)
         return cell
     }
 }
