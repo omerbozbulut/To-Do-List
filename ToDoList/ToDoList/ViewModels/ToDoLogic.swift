@@ -8,7 +8,7 @@
 import Foundation
 
 struct ToDoLogic{
-    let toDoList: [ToDo] = [ToDo(title: "Markete git", description: "adasdas", completed: true),
+    let toDoList: [ToDo] = [ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata alkahve, çikolata alkahve, çikolata alkahve, çikolata alkahve, çikolata al sad", completed: false),
                             ToDo(title: "Çamaşırları yıka", description: "adasdas22", completed: false)]
     
      func getToDos()->[ToDo]?{
@@ -16,12 +16,18 @@ struct ToDoLogic{
         if let data = UserDefaults.standard.value(forKey:"toDoList") as? Data {
             if let toDos = try? PropertyListDecoder().decode(Array<ToDo>.self, from: data){
                 let inComplete = toDos.filter{ todo in
-                    return todo.completed
+                    return !todo.completed
                 }
                 return inComplete
             }
         }
          return nil
+    }
+    
+    func getToDo(_ index:Int)->ToDo{
+        updateUserDefaults()
+        guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", completed: false)}
+        return toDos[index]
     }
     
      func createToDos(){

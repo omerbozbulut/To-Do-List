@@ -8,8 +8,9 @@
 import Foundation
 
 struct Constants{
-    static let tableViewCellIdentifier = "tableCell"
+    static let tableViewCellIdentifier = "ToDoCell"
     static let buttonImageName = "plus.circle.fill"
+    static let showToDoDetailIdentifier = "showToDoDetail"
     
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"

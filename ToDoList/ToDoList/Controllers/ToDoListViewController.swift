@@ -14,6 +14,7 @@ class ToDoListViewController: UIViewController {
     private let toDoListTable = UITableView()
     private let createToDoButton = UIButton()
     private let toDoLogic = ToDoLogic()
+    private var selectedRow = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +30,19 @@ class ToDoListViewController: UIViewController {
         view.addSubview(createToDoButton)
         
         configureDesign()
-        makeTitleLabelConstrainsts()
-        makeCreateToDoButtonConstrainsts()
-        makeToDoListTableConstrainsts()
+        makeTitleLabelConstraints()
+        makeCreateToDoButtonConstraints()
+        makeToDoListTableConstraints()
+        
+        createToDoButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
     }
     
-//MARK: - Constrainsts
-    private func makeTitleLabelConstrainsts() {
+    @objc func createToDo(){
+        //present(ToDoListViewController(), animated: true, completion: nil)
+    }
+    
+//MARK: - Constraints
+    private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
             make.centerX.equalTo(view.center.x)
@@ -43,7 +50,7 @@ class ToDoListViewController: UIViewController {
         }
     }
     
-    private func makeToDoListTableConstrainsts() {
+    private func makeToDoListTableConstraints() {
         toDoListTable.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).offset(48)
             make.right.left.equalToSuperview()
@@ -51,7 +58,7 @@ class ToDoListViewController: UIViewController {
         }
     }
     
-    private func makeCreateToDoButtonConstrainsts() {
+    private func makeCreateToDoButtonConstraints() {
         createToDoButton.snp.makeConstraints { make in
             make.height.equalTo(48)
             make.width.equalToSuperview()
@@ -84,8 +91,8 @@ class ToDoListViewController: UIViewController {
     }
     
     private func tableViewDesign() {
-        
         toDoListTable.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 222/255, alpha: 1.0)
+        toDoListTable.rowHeight = 80
         toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
     }
     
@@ -100,10 +107,13 @@ class ToDoListViewController: UIViewController {
 //MARK: ~EXTENSİONS
 extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let count = toDoLogic.getToDos()?.count {
-            return count
-        }
+        if let count = toDoLogic.getToDos()?.count {return count}
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
+        performSegue(withIdentifier: Constants.showToDoDetailIdentifier, sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,9 +121,16 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let toDos = toDoLogic.getToDos() else {return UITableViewCell()}
         let toDo = toDos[indexPath.row]
         cell.textLabel?.text = toDo.title
-        cell.detailTextLabel?.text = toDo.description
         cell.selectionStyle = .none
         return cell
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.showToDoDetailIdentifier{
+            let destination = segue.destination as! ToDoDetailViewController
+            destination.toDoIndex = selectedRow
+        }
     }
 }
 
