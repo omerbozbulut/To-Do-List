@@ -8,8 +8,8 @@
 import Foundation
 
 struct ToDoLogic{
-    let toDoList: [ToDo] = [ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata alkahve, çikolata alkahve, çikolata alkahve, çikolata alkahve, çikolata al sad", completed: false),
-                            ToDo(title: "Çamaşırları yıka", description: "adasdas22", completed: false)]
+    let toDoList: [ToDo] = [ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahveal", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false),
+                            ToDo(title: "Çamaşırları yıka", description: "adasdas22", date: Date(timeIntervalSince1970: 4333446145.0/1000.0), completed: false)]
     
      func getToDos()->[ToDo]?{
         updateUserDefaults()
@@ -26,7 +26,7 @@ struct ToDoLogic{
     
     func getToDo(_ index:Int)->ToDo{
         updateUserDefaults()
-        guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", completed: false)}
+        guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false)}
         return toDos[index]
     }
     

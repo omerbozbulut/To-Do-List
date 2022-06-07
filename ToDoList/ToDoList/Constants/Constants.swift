@@ -11,6 +11,7 @@ struct Constants{
     static let tableViewCellIdentifier = "ToDoCell"
     static let buttonImageName = "plus.circle.fill"
     static let showToDoDetailIdentifier = "showToDoDetail"
+    static let showToDoCreateIdentifier = "showCreateToDo"
     
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"

@@ -38,7 +38,7 @@ class ToDoListViewController: UIViewController {
     }
     
     @objc func createToDo(){
-        //present(ToDoListViewController(), animated: true, completion: nil)
+        performSegue(withIdentifier: Constants.showToDoCreateIdentifier, sender: self)
     }
     
 //MARK: - Constraints
@@ -130,6 +130,10 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == Constants.showToDoDetailIdentifier{
             let destination = segue.destination as! ToDoDetailViewController
             destination.toDoIndex = selectedRow
+        }
+        else if segue.identifier == Constants.showToDoCreateIdentifier{
+            //let destination = segue.destination as! CreateToDoViewController
+            
         }
     }
 }

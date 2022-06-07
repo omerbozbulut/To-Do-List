@@ -13,9 +13,9 @@ class ToDoDetailViewController: UIViewController {
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let dateLabel = UILabel()
-
-    var toDoIndex = 0
     private let toDoLogic = ToDoLogic()
+    private let dateFormatter = DateFormatter()
+    var toDoIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +31,13 @@ class ToDoDetailViewController: UIViewController {
         configureDesign()
         makeTitleLabelConstraints()
         makeDescriptionLabelConstraints()
+        makeDateLabelConstraints()
     }
     
     private func configureDesign() {
         titleLabelDesign()
         descriptionLabelDesign()
+        dateLabelDesign()
     }
     
     //MARK: - Design
@@ -57,7 +59,11 @@ class ToDoDetailViewController: UIViewController {
     }
     
     private func dateLabelDesign(){
-        //dateLabel.text = toDoLogic.getToDo(toDoIndex).date
+        dateLabel.textColor = .red
+        dateLabel.textAlignment = .right
+        let date = toDoLogic.getToDo(toDoIndex).date
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        dateLabel.text = dateFormatter.string(from: date)
     }
     
     //MARK: - Constraints
@@ -72,6 +78,15 @@ class ToDoDetailViewController: UIViewController {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).offset(80)
             make.right.left.equalToSuperview().offset(32)
+            make.height.equalTo(80)
+        }
+    }
+    
+    private func makeDateLabelConstraints(){
+        dateLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-80)
+            make.right.left.equalToSuperview().offset(-32)
+            make.height.equalTo(40)
         }
     }
     
