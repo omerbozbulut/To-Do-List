@@ -8,8 +8,16 @@
 import Foundation
 
 struct ToDoLogic{
-    let toDoList: [ToDo] = [ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahve ekmek, su, kahveal", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false),
-                            ToDo(title: "Çamaşırları yıka", description: "adasdas22", date: Date(timeIntervalSince1970: 4333446145.0/1000.0), completed: false)]
+    let toDoList: [ToDo] = [
+        ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata ekmek, su, ekmek, su, kahve ekmek, su, kahveal", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false),
+        ToDo(title: "Çamaşırları yıka", description: "adasdas22", date: Date(timeIntervalSince1970: 4333446145.0/1000.0), completed: false)]
+    
+    func dateToString(date: Date)->String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let stringDate = dateFormatter.string(from: date)
+        return stringDate
+    }
     
      func getToDos()->[ToDo]?{
         updateUserDefaults()

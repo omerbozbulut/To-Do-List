@@ -7,10 +7,11 @@
 
 import Foundation
 
+
 struct ToDo: Codable{
     let title: String
     let description: String
-    var date: Date
+    let date: Date
     let completed: Bool
     
     init(title:String, description: String, date: Date, completed:Bool) {

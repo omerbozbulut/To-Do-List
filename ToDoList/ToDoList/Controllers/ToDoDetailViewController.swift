@@ -51,7 +51,7 @@ class ToDoDetailViewController: UIViewController {
     
     private func descriptionLabelDesign(){
         descriptionLabel.text = toDoLogic.getToDo(toDoIndex).description
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)

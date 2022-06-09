@@ -16,5 +16,6 @@ struct Constants{
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"
         static let HelveticaNeueMEDİUM = "HelveticaNeue-medium"
+        static let HelveticaBOLD = "Helvetica-Bold"
     }
 }

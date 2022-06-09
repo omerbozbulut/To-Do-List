@@ -24,7 +24,6 @@ class ToDoListViewController: UIViewController {
     }
 
     private func configure() {
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
         view.addSubview(toDoListTable)
         view.addSubview(createToDoButton)
@@ -67,7 +66,7 @@ class ToDoListViewController: UIViewController {
     }
     
     private func configureDesign() {
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemIndigo
 
         buttonDesign()
         tableViewDesign()
@@ -76,31 +75,32 @@ class ToDoListViewController: UIViewController {
     
 //MARK: - Design
     private func buttonDesign() {
-        createToDoButton.backgroundColor = .lightGray
+        createToDoButton.backgroundColor = .systemIndigo
         //alignment
         createToDoButton.contentHorizontalAlignment = .left
         createToDoButton.contentVerticalAlignment = .center
         //title
-        createToDoButton.setTitleColor(.systemIndigo, for: .normal)
+        createToDoButton.setTitleColor(.white, for: .normal)
         createToDoButton.titleLabel?.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)
         createToDoButton.setTitle("New to do", for: .normal)
         //image
         createToDoButton.setImage(UIImage(systemName: Constants.buttonImageName), for: .normal)
         createToDoButton.setInsets(forContentPadding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), imageTitlePadding: 15)
-        createToDoButton.imageView?.tintColor = .systemIndigo
+        createToDoButton.imageView?.tintColor = .white
     }
     
     private func tableViewDesign() {
-        toDoListTable.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 222/255, alpha: 1.0)
-        toDoListTable.rowHeight = 80
-        toDoListTable.register(UITableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
+        //toDoListTable.backgroundColor = .black
+        toDoListTable.rowHeight = 88
+        toDoListTable.register(ToDoTableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
+        toDoListTable.separatorColor = .black
     }
     
     private func titleLabelDesign() {
         titleLabel.text = "To Do List"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
-        titleLabel.textColor = .systemIndigo
+        titleLabel.textColor = .white
     }
 }
 
@@ -117,15 +117,13 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellIdentifier, for: indexPath)
-        guard let toDos = toDoLogic.getToDos() else {return UITableViewCell()}
-        let toDo = toDos[indexPath.row]
-        cell.textLabel?.text = toDo.title
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.tableViewCellIdentifier, for: indexPath) as! ToDoTableViewCell
+        let toDo = toDoLogic.getToDo(indexPath.row)
+        cell.configureToDo(toDo: toDo)
         cell.selectionStyle = .none
         return cell
     }
-    
-    
+  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.showToDoDetailIdentifier{
             let destination = segue.destination as! ToDoDetailViewController
@@ -133,11 +131,9 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if segue.identifier == Constants.showToDoCreateIdentifier{
             //let destination = segue.destination as! CreateToDoViewController
-            
         }
     }
 }
-
 
 extension UIButton {
     func setInsets(
