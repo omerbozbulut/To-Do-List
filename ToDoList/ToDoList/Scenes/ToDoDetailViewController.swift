@@ -78,7 +78,7 @@ class ToDoDetailViewController: UIViewController {
         descriptionLabelDesign()
     }
     
-    //MARK: - Design
+//MARK: - Design
     private func titleLabelDesign() {
         titleLabel.text = toDoLogic.getToDo(toDoIndex).title
         titleLabel.lineBreakMode = .byWordWrapping
@@ -127,7 +127,7 @@ class ToDoDetailViewController: UIViewController {
         saveButton.layer.masksToBounds = true
     }
     
-    //MARK: - Constraints
+//MARK: - Constraints
     private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(32)

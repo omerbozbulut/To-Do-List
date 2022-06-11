@@ -13,11 +13,11 @@ class ToDoListViewController: UIViewController {
     private let titleLabel = UILabel()
     private let toDoListTable = UITableView()
     private let createToDoButton = UIButton()
-    private let toDoLogic = ToDoLogic()
+    private var toDoLogic = ToDoLogic()
     private var selectedRow = 0
         
     override func viewWillAppear(_ animated: Bool) {
-        toDoListTable.reloadData()
+        updateData()
     }
     
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ class ToDoListViewController: UIViewController {
         
         toDoListTable.delegate = self
         toDoListTable.dataSource = self
+        toDoLogic.delegate = self
         configure()
     }
 
@@ -45,6 +46,12 @@ class ToDoListViewController: UIViewController {
         let createToDo = CreateToDoViewController()
         createToDo.modalPresentationStyle = .fullScreen
         present(createToDo, animated: true, completion: nil)
+    }
+    
+    func updateData(){
+        DispatchQueue.main.async {
+            self.toDoListTable.reloadData()
+        }
     }
     
 //MARK: - Constraints
@@ -97,7 +104,7 @@ class ToDoListViewController: UIViewController {
     }
     
     private func tableViewDesign() {
-        toDoListTable.rowHeight = 88
+        toDoListTable.rowHeight = 104
         toDoListTable.register(ToDoTableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
         toDoListTable.separatorColor = .black
     }
@@ -132,6 +139,13 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.index = indexPath.row
         return cell
+    }
+}
+
+extension ToDoListViewController: ReloadDelegate {
+    func refresh() {
+        print("asdadasdasd")
+        updateData()
     }
 }
 

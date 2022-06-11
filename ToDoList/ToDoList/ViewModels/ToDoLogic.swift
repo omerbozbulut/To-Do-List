@@ -7,8 +7,15 @@
 
 import Foundation
 
+protocol ReloadDelegate{
+    func refresh()
+}
+
+
 struct ToDoLogic{
 
+    var delegate: ReloadDelegate!
+    
     func dateToString(date: Date)->String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -38,6 +45,7 @@ struct ToDoLogic{
     func completeToDo(_ toDoIndex: Int){
         toDoList.remove(at: toDoIndex)
         updateUserDefaults()
+        delegate?.refresh()
     }
     
     func createToDo(){

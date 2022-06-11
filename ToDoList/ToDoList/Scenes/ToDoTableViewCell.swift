@@ -39,6 +39,7 @@ class ToDoTableViewCell: UITableViewCell{
         dateLabel.text = toDoLogic.dateToString(date: toDo.date)
     }
     
+//MARK: - Design
     private func configureDesign() {
         titleLabelDesign()
         completeButtonDesign()
@@ -56,14 +57,16 @@ class ToDoTableViewCell: UITableViewCell{
         completeButton.setTitle("", for: .normal)
         completeButton.tintColor = .black
         completeButton.translatesAutoresizingMaskIntoConstraints = false
+        
     }
     
     private func dateLabelDesign(){
         dateLabel.numberOfLines = 0
         dateLabel.adjustsFontSizeToFitWidth = true
-        dateLabel.textColor = .systemPink
+        dateLabel.textColor = .lightGray
     }
     
+//MARK: - Constraints
     private func configureConstraints() {
         makecompleteButtonConstraints()
         makeTitleLabelConstraints()
@@ -75,13 +78,13 @@ class ToDoTableViewCell: UITableViewCell{
             make.bottom.equalToSuperview().offset(8)
             make.top.equalToSuperview()
             make.leading.equalToSuperview()
-            make.width.equalTo(48)
+            make.width.equalTo(64)
         }
     }
     
     private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(24)
             make.leading.equalTo(completeButton).offset(56)
             make.trailing.equalToSuperview().offset(8)
         }
@@ -89,8 +92,7 @@ class ToDoTableViewCell: UITableViewCell{
     
     private func makeDateLabelConstraints(){
         dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).offset(10)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-16)
             make.trailing.equalToSuperview().offset(-8)
         }
     }
