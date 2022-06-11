@@ -37,7 +37,11 @@ class ToDoListViewController: UIViewController {
     }
     
     @objc func createToDo(){
-        performSegue(withIdentifier: Constants.showToDoCreateIdentifier, sender: self)
+        //present
+    }
+    
+    func updateData(){
+        toDoListTable.reloadData()
     }
     
 //MARK: - Constraints
@@ -90,7 +94,6 @@ class ToDoListViewController: UIViewController {
     }
     
     private func tableViewDesign() {
-        //toDoListTable.backgroundColor = .black
         toDoListTable.rowHeight = 88
         toDoListTable.register(ToDoTableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
         toDoListTable.separatorColor = .black
@@ -113,7 +116,10 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
-        performSegue(withIdentifier: Constants.showToDoDetailIdentifier, sender: self)
+        let toDoDetail = ToDoDetailViewController()
+        toDoDetail.modalPresentationStyle = .fullScreen
+        toDoDetail.toDoIndex = indexPath.row
+        present(toDoDetail, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -122,16 +128,6 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureToDo(toDo: toDo)
         cell.selectionStyle = .none
         return cell
-    }
-  
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.showToDoDetailIdentifier{
-            let destination = segue.destination as! ToDoDetailViewController
-            destination.toDoIndex = selectedRow
-        }
-        else if segue.identifier == Constants.showToDoCreateIdentifier{
-            //let destination = segue.destination as! CreateToDoViewController
-        }
     }
 }
 

@@ -14,7 +14,6 @@ class ToDoTableViewCell: UITableViewCell{
     private let titleLabel = UILabel()
     private let completeButton = UIButton()
     private let dateLabel = UILabel()
-    
     private let toDoLogic = ToDoLogic()
     private let toDoCellIdentifier = Constants.tableViewCellIdentifier
     
@@ -29,8 +28,11 @@ class ToDoTableViewCell: UITableViewCell{
         completeButton.addTarget(self, action: #selector(toDoCompleted), for: .touchUpInside)
     }
     
-    @objc func toDoCompleted(){
-        print("button")
+    @objc func toDoCompleted(sender: UIButton){
+        if let title = titleLabel.text {
+            toDoLogic.completeToDo(toDoTitle: title)
+        }
+        
     }
     
     func configureToDo(toDo: ToDo){
