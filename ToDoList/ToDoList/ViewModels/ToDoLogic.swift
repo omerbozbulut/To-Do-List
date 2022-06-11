@@ -35,8 +35,8 @@ struct ToDoLogic{
         return toDos[index]
     }
     
-    func completeToDo(toDoTitle: String){
-        UserDefaults.standard.removeObject(forKey: toDoTitle)
+    func completeToDo(_ toDoIndex: Int){
+        toDoList.remove(at: toDoIndex)
         updateUserDefaults()
     }
     

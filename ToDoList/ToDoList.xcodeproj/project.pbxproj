@@ -87,7 +87,7 @@
 				17E97A0C284BCF6600E06087 /* Storyboards */,
 				17E97A09284BC83F00E06087 /* Resources */,
 				17E97A0D284BCF7500E06087 /* Constants */,
-				17E97A07284BC78900E06087 /* Controllers */,
+				17E97A07284BC78900E06087 /* Scenes */,
 				17E97A05284BC77200E06087 /* Models */,
 				17E97A06284BC77E00E06087 /* ViewModels */,
 			);
@@ -110,7 +110,7 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		17E97A07284BC78900E06087 /* Controllers */ = {
+		17E97A07284BC78900E06087 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				1776F16A2847FF8E00DC0C85 /* ToDoListViewController.swift */,
@@ -118,7 +118,7 @@
 				17B3ED5F284ED00400BF2099 /* CreateToDoViewController.swift */,
 				17B3ED5B284E9DED00BF2099 /* ToDoTableViewCell.swift */,
 			);
-			path = Controllers;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		17E97A08284BC7AF00E06087 /* App */ = {
