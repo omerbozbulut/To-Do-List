@@ -8,10 +8,7 @@
 import Foundation
 
 struct ToDoLogic{
-    let toDoList: [ToDo] = [
-        ToDo(title: "Markete git", description: "ekmek, su, kahve, çikolata ekmek, su, ekmek, su, kahve ekmek, su, kahveal", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false),
-        ToDo(title: "Çamaşırları yıka", description: "adasdas22", date: Date(timeIntervalSince1970: 4333446145.0/1000.0), completed: false)]
-    
+
     func dateToString(date: Date)->String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -34,18 +31,29 @@ struct ToDoLogic{
     
     func getToDo(_ index:Int)->ToDo{
         updateUserDefaults()
-        guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false)}
+        guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", date: Date.init(timeIntervalSinceNow: 1), completed: false)}
         return toDos[index]
     }
     
-     func createToDos(){
+    func completeToDo(toDoTitle: String){
+        UserDefaults.standard.removeObject(forKey: toDoTitle)
+        updateUserDefaults()
+    }
+    
+    func createToDo(){
          
        updateUserDefaults()
+    }
+    
+    mutating func updateToDo(_ description: String,_ toDoIndex: Int){
+        let oldToDo = toDoList[toDoIndex]
+        let newToDo = ToDo(title: oldToDo.title, description: description, date: oldToDo.date, completed: oldToDo.completed)
+        toDoList.remove(at: toDoIndex)
+        toDoList.append(newToDo)
+        updateUserDefaults()
     }
     
     func updateUserDefaults(){
         UserDefaults.standard.set(try? PropertyListEncoder().encode(toDoList), forKey:"toDoList")
     }
-    
-    
 }

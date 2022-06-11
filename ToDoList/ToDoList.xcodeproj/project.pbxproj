@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1760FD8428481148000C9B60 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1760FD8328481148000C9B60 /* SnapKit */; };
-		176575FF2854942C00EB4EEF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176575FE2854942C00EB4EEF /* Utilities.swift */; };
 		1776F1672847FF8E00DC0C85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F1662847FF8E00DC0C85 /* AppDelegate.swift */; };
 		1776F1692847FF8E00DC0C85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F1682847FF8E00DC0C85 /* SceneDelegate.swift */; };
 		1776F16B2847FF8E00DC0C85 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1776F16A2847FF8E00DC0C85 /* ToDoListViewController.swift */; };
@@ -37,7 +36,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		176575FE2854942C00EB4EEF /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		1776F1632847FF8E00DC0C85 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1776F1662847FF8E00DC0C85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1776F1682847FF8E00DC0C85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				17E979FF284BC2DB00E06087 /* ToDo.swift */,
-				176575FE2854942C00EB4EEF /* Utilities.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -245,7 +242,6 @@
 				17B3ED60284ED00400BF2099 /* CreateToDoViewController.swift in Sources */,
 				1776F1672847FF8E00DC0C85 /* AppDelegate.swift in Sources */,
 				1776F1692847FF8E00DC0C85 /* SceneDelegate.swift in Sources */,
-				176575FF2854942C00EB4EEF /* Utilities.swift in Sources */,
 				17E979FE284B860600E06087 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

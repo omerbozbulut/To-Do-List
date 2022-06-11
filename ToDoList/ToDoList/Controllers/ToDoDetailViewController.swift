@@ -14,11 +14,15 @@ class ToDoDetailViewController: UIViewController {
     private let descriptionTextField = UITextField()
     private let dateLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private let toDoLogic = ToDoLogic()
+    private var toDoLogic = ToDoLogic()
     private let dateFormatter = DateFormatter()
     private let cancelButton = UIButton()
     private let saveButton = UIButton()
     var toDoIndex = 0
+    
+    override func viewWillAppear(_ animated: Bool) {
+        descriptionTextField.text = toDoLogic.getToDo(toDoIndex).description
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,10 @@ class ToDoDetailViewController: UIViewController {
     }
     
     @objc func saveChanges() {
-        
+        if let description = descriptionTextField.text{
+            toDoLogic.updateToDo(description, toDoIndex)
+        }
+        dismiss(animated: true)
     }
     
     private func configureConstraints() {

@@ -15,6 +15,10 @@ class ToDoListViewController: UIViewController {
     private let createToDoButton = UIButton()
     private let toDoLogic = ToDoLogic()
     private var selectedRow = 0
+        
+    override func viewWillAppear(_ animated: Bool) {
+        toDoListTable.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,10 +42,6 @@ class ToDoListViewController: UIViewController {
     
     @objc func createToDo(){
         //present
-    }
-    
-    func updateData(){
-        toDoListTable.reloadData()
     }
     
 //MARK: - Constraints
