@@ -9,8 +9,10 @@ import Foundation
 
 struct Constants{
     static let tableViewCellIdentifier = "ToDoCell"
-    static let buttonImageName = "plus.circle.fill"
-
+    static let createButtonImageName = "plus.circle.fill"
+    static let completeButtonImageName = "circle"
+    static let dateFormatString = "yyyy/MM/dd HH:mm"
+    
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"
         static let HelveticaNeueMEDİUM = "HelveticaNeue-medium"

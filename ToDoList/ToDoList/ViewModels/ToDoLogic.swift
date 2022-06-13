@@ -7,23 +7,23 @@
 
 import Foundation
 
-protocol ReloadDelegate{
+protocol ReloadDelegate {
     func refresh()
 }
 
 
-struct ToDoLogic{
+struct ToDoLogic {
 
     var delegate: ReloadDelegate!
     
-    func dateToString(date: Date)->String{
+    func dateToString(date: Date)->String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        dateFormatter.dateFormat = Constants.dateFormatString
         let stringDate = dateFormatter.string(from: date)
         return stringDate
     }
     
-     func getToDos()->[ToDo]?{
+     func getToDos()->[ToDo]? {
         updateUserDefaults()
         if let data = UserDefaults.standard.value(forKey:"toDoList") as? Data {
             if let toDos = try? PropertyListDecoder().decode(Array<ToDo>.self, from: data){
@@ -36,25 +36,25 @@ struct ToDoLogic{
          return nil
     }
     
-    func getToDo(_ index:Int)->ToDo{
+    func getToDo(_ index:Int)->ToDo {
         updateUserDefaults()
         guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", date: Date.init(timeIntervalSinceNow: 1), completed: false)}
         return toDos[index]
     }
     
-    func completeToDo(_ toDoIndex: Int){
+    func completeToDo(_ toDoIndex: Int) {
         toDoList.remove(at: toDoIndex)
         updateUserDefaults()
         delegate?.refresh()
     }
     
-    func createToDo(title: String, description: String, date: Date){
+    func createToDo(title: String, description: String, date: Date) {
         let newToDo = ToDo(title: title, description: description, date: date, completed: false)
         toDoList.append(newToDo)
         updateUserDefaults()
     }
     
-    mutating func updateToDo(_ description: String,_ toDoIndex: Int){
+    mutating func updateToDo(_ description: String,_ toDoIndex: Int) {
         let oldToDo = toDoList[toDoIndex]
         let newToDo = ToDo(title: oldToDo.title, description: description, date: oldToDo.date, completed: oldToDo.completed)
         toDoList.remove(at: toDoIndex)
@@ -62,7 +62,7 @@ struct ToDoLogic{
         updateUserDefaults()
     }
     
-    func updateUserDefaults(){
+    func updateUserDefaults() {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(toDoList), forKey:"toDoList")
     }
 }

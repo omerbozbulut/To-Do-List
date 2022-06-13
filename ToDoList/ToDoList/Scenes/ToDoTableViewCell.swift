@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class ToDoTableViewCell: UITableViewCell{
+class ToDoTableViewCell: UITableViewCell {
     
     private let titleLabel = UILabel()
     private let completeButton = UIButton()
@@ -33,7 +33,7 @@ class ToDoTableViewCell: UITableViewCell{
         toDoLogic.completeToDo(index)
     }
     
-    func configureToDo(toDo: ToDo){
+    func configureToDo(toDo: ToDo) {
         titleLabel.text = toDo.title
         dateLabel.text = toDoLogic.dateToString(date: toDo.date)
     }
@@ -52,14 +52,14 @@ class ToDoTableViewCell: UITableViewCell{
     }
     
     private func completeButtonDesign() {
-        completeButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        completeButton.setImage(UIImage(systemName: Constants.completeButtonImageName), for: .normal)
         completeButton.setTitle("", for: .normal)
         completeButton.tintColor = .black
         completeButton.translatesAutoresizingMaskIntoConstraints = false
         
     }
     
-    private func dateLabelDesign(){
+    private func dateLabelDesign() {
         dateLabel.numberOfLines = 0
         dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.textColor = .lightGray

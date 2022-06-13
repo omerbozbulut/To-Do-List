@@ -112,8 +112,7 @@ class ToDoDetailViewController: UIViewController {
         dateLabel.textAlignment = .right
         dateLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 19)
         let date = toDoLogic.getToDo(toDoIndex).date
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
-        dateLabel.text = dateFormatter.string(from: date)
+        dateLabel.text = toDoLogic.dateToString(date: date)
     }
     
     private func cancelButtonDesign() {

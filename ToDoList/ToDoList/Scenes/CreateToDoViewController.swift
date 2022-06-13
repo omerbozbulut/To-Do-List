@@ -37,7 +37,7 @@ class CreateToDoViewController: UIViewController {
         cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
     }
     
-    @objc func createToDo(){
+    @objc func createToDo() {
         guard let title = titleTextField.text else {return}
         guard let description = descriptionTextField.text else {return}
         let date = datePicker.date
@@ -48,7 +48,7 @@ class CreateToDoViewController: UIViewController {
         }
     }
     
-    @objc func turnBack(){
+    @objc func turnBack() {
         dismiss(animated: true, completion: nil)
     }
 

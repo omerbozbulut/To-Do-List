@@ -98,7 +98,7 @@ class ToDoListViewController: UIViewController {
         createToDoButton.titleLabel?.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)
         createToDoButton.setTitle("New To-Do", for: .normal)
         //image
-        createToDoButton.setImage(UIImage(systemName: Constants.buttonImageName), for: .normal)
+        createToDoButton.setImage(UIImage(systemName: Constants.createButtonImageName), for: .normal)
         createToDoButton.setInsets(forContentPadding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), imageTitlePadding: 15)
         createToDoButton.imageView?.tintColor = .white
     }
