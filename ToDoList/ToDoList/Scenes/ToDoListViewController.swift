@@ -13,7 +13,7 @@ class ToDoListViewController: UIViewController {
     private let titleLabel = UILabel()
     private let toDoListTable = UITableView()
     private let createToDoButton = UIButton()
-    private var toDoLogic = ToDoLogic()
+    private var toDoLogic = ToDoLogicViewModel()
     private var selectedRow = 0
         
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +25,7 @@ class ToDoListViewController: UIViewController {
         
         toDoListTable.delegate = self
         toDoListTable.dataSource = self
-        toDoLogic.delegate = self
+    
         configure()
     }
 
@@ -136,13 +136,14 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureToDo(toDo: toDo)
         cell.selectionStyle = .none
         cell.index = indexPath.row
+        cell.reloadDelegate = self
         return cell
     }
 }
 
 extension ToDoListViewController: ReloadDelegate {
     func refresh() {
-        
+        updateData()
     }
 }
 

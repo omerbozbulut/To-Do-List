@@ -15,7 +15,7 @@ class ToDoDetailViewController: UIViewController {
     private let descriptionTextField = UITextField()
     private let dateLabel = UILabel()
     private let descriptionLabel = UILabel()
-    private var toDoLogic = ToDoLogic()
+    private var toDoLogic = ToDoLogicViewModel()
     private let dateFormatter = DateFormatter()
     private let cancelButton = UIButton()
     private let saveButton = UIButton()

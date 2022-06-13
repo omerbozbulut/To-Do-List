@@ -15,7 +15,7 @@ class CreateToDoViewController: UIViewController {
     private let datePicker = UIDatePicker()
     private let createButton = UIButton()
     private let cancelButton = UIButton()
-    var toDoLogic = ToDoLogic()
+    var toDoLogic = ToDoLogicViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

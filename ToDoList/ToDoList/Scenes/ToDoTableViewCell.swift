@@ -9,12 +9,17 @@ import Foundation
 import UIKit
 import SnapKit
 
+protocol ReloadDelegate: ToDoListViewController {
+    func refresh()
+}
+
 class ToDoTableViewCell: UITableViewCell {
     
     private let titleLabel = UILabel()
     private let completeButton = UIButton()
     private let dateLabel = UILabel()
-    private let toDoLogic = ToDoLogic()
+    private let toDoLogic = ToDoLogicViewModel()
+    weak var reloadDelegate: ReloadDelegate?
     var index = 0
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,6 +36,7 @@ class ToDoTableViewCell: UITableViewCell {
     
     @objc func toDoCompleted() {
         toDoLogic.completeToDo(index)
+        reloadDelegate?.refresh()
     }
     
     func configureToDo(toDo: ToDo) {
