@@ -11,7 +11,6 @@ protocol ReloadDelegate {
     func refresh()
 }
 
-
 struct ToDoLogic {
 
     var delegate: ReloadDelegate!
@@ -25,7 +24,7 @@ struct ToDoLogic {
     
      func getToDos()->[ToDo]? {
         updateUserDefaults()
-        if let data = UserDefaults.standard.value(forKey:"toDoList") as? Data {
+         if let data = UserDefaults.standard.value(forKey: Constants.userDefaultsKey) as? Data {
             if let toDos = try? PropertyListDecoder().decode(Array<ToDo>.self, from: data){
                 let inComplete = toDos.filter{ todo in
                     return !todo.completed
@@ -54,15 +53,15 @@ struct ToDoLogic {
         updateUserDefaults()
     }
     
-    mutating func updateToDo(_ description: String,_ toDoIndex: Int) {
+    mutating func updateToDo(_ title: String, _ description: String, _ toDoIndex: Int) {
         let oldToDo = toDoList[toDoIndex]
-        let newToDo = ToDo(title: oldToDo.title, description: description, date: oldToDo.date, completed: oldToDo.completed)
+        let newToDo = ToDo(title: title, description: description, date: oldToDo.date, completed: oldToDo.completed)
         toDoList.remove(at: toDoIndex)
         toDoList.append(newToDo)
         updateUserDefaults()
     }
     
     func updateUserDefaults() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(toDoList), forKey:"toDoList")
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(toDoList), forKey: Constants.userDefaultsKey)
     }
 }

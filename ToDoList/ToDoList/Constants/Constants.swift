@@ -12,6 +12,7 @@ struct Constants{
     static let createButtonImageName = "plus.circle.fill"
     static let completeButtonImageName = "circle"
     static let dateFormatString = "yyyy/MM/dd HH:mm"
+    static let userDefaultsKey = "toDoList"
     
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"

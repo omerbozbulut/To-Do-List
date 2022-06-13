@@ -49,44 +49,9 @@ class ToDoListViewController: UIViewController {
     }
     
     func updateData(){
-        DispatchQueue.main.async {
-            self.toDoListTable.reloadData()
-        }
+        toDoListTable.reloadData()
     }
-    
-//MARK: - Constraints
-    private func makeTitleLabelConstraints() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(40)
-            make.centerX.equalTo(view.center.x)
-            make.height.equalTo(40)
-        }
-    }
-    
-    private func makeToDoListTableConstraints() {
-        toDoListTable.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).offset(48)
-            make.right.left.equalToSuperview()
-            make.bottom.equalTo(createToDoButton)
-        }
-    }
-    
-    private func makeCreateToDoButtonConstraints() {
-        createToDoButton.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.width.equalToSuperview()
-            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        }
-    }
-    
-    private func configureDesign() {
-        view.backgroundColor = .systemIndigo
 
-        buttonDesign()
-        tableViewDesign()
-        titleLabelDesign()
-    }
-    
 //MARK: - Design
     private func buttonDesign() {
         createToDoButton.backgroundColor = .systemIndigo
@@ -114,6 +79,39 @@ class ToDoListViewController: UIViewController {
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
         titleLabel.textColor = .white
+    }
+    
+//MARK: - Constraints
+    private func makeTitleLabelConstraints() {
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
+            make.centerX.equalTo(view.center.x)
+            make.height.equalTo(40)
+        }
+    }
+        
+    private func makeToDoListTableConstraints() {
+        toDoListTable.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel).offset(48)
+            make.right.left.equalToSuperview()
+            make.bottom.equalTo(createToDoButton)
+        }
+    }
+        
+    private func makeCreateToDoButtonConstraints() {
+        createToDoButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.width.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+        
+    private func configureDesign() {
+        view.backgroundColor = .systemIndigo
+
+        buttonDesign()
+        tableViewDesign()
+        titleLabelDesign()
     }
 }
 
@@ -144,7 +142,7 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ToDoListViewController: ReloadDelegate {
     func refresh() {
-        updateData()
+        
     }
 }
 

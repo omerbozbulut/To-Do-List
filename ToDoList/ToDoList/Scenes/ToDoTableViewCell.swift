@@ -83,15 +83,16 @@ class ToDoTableViewCell: UITableViewCell {
     
     private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(16)
-            make.leading.equalTo(completeButton).offset(56)
-            make.trailing.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(24)
+            make.leading.equalTo(completeButton).offset(64)
+            make.trailing.equalToSuperview().offset(-8)
+            make.bottom.equalTo(dateLabel).offset(-16)
         }
     }
     
     private func makeDateLabelConstraints() {
         dateLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-8)
             make.trailing.equalToSuperview().offset(-8)
         }
     }

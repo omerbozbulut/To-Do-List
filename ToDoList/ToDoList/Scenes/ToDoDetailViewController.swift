@@ -11,6 +11,7 @@ import SnapKit
 class ToDoDetailViewController: UIViewController {
 
     private let titleLabel = UILabel()
+    private let titleLTextField = UITextField()
     private let descriptionTextField = UITextField()
     private let dateLabel = UILabel()
     private let descriptionLabel = UILabel()
@@ -31,6 +32,7 @@ class ToDoDetailViewController: UIViewController {
     
     private func configure() {
         view.addSubview(titleLabel)
+        view.addSubview(titleLTextField)
         view.addSubview(descriptionTextField)
         view.addSubview(dateLabel)
         view.addSubview(descriptionLabel)
@@ -47,8 +49,8 @@ class ToDoDetailViewController: UIViewController {
     }
     
     @objc func saveChanges() {
-        if let description = descriptionTextField.text{
-            toDoLogic.updateToDo(description, toDoIndex)
+        if let description = descriptionTextField.text, let title = titleLTextField.text{
+            toDoLogic.updateToDo(title, description, toDoIndex)
         }
         dismiss(animated: true)
     }
@@ -60,6 +62,7 @@ class ToDoDetailViewController: UIViewController {
     
     private func configureConstraints() {
         makeTitleLabelConstraints()
+        makeTitleTextFieldConstraints()
         makeDescriptionTextFieldConstraints()
         makeDateLabelConstraints()
         cancelButtonConstraints()
@@ -71,25 +74,38 @@ class ToDoDetailViewController: UIViewController {
         view.backgroundColor = .white
         
         titleLabelDesign()
+        titleTextFieldDesign()
+        descriptionLabelDesign()
         descriptionTextFieldDesign()
         dateLabelDesign()
         cancelButtonDesign()
         saveButtonDesign()
-        descriptionLabelDesign()
     }
     
 //MARK: - Design
     private func titleLabelDesign() {
-        titleLabel.text = toDoLogic.getToDo(toDoIndex).title
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
-        titleLabel.textAlignment = .left
-        titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 30)
+        titleLabel.text = "Edit title"
+        titleLabel.textColor = .black
+        titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 25)
+    }
+    
+    private func titleTextFieldDesign() {
+        titleLTextField.text = toDoLogic.getToDo(toDoIndex).title
+        titleLTextField.textColor = .white
+        titleLTextField.tintColor = .white
+        titleLTextField.textAlignment = .left
+        titleLTextField.backgroundColor = .systemIndigo
+        titleLTextField.layer.masksToBounds = true
+        titleLTextField.layer.cornerRadius = 10
+        titleLTextField.font = .systemFont(ofSize: 22)
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: self.titleLTextField.frame.height))
+        titleLTextField.leftView = paddingView
+        titleLTextField.leftViewMode = UITextField.ViewMode.always
     }
     
     private func descriptionLabelDesign() {
-        descriptionLabel.text = "Note"
-        descriptionLabel.textColor = .systemIndigo
+        descriptionLabel.text = "Edit note"
+        descriptionLabel.textColor = .black
         descriptionLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 25)
     }
     
@@ -132,17 +148,27 @@ class ToDoDetailViewController: UIViewController {
     }
     
 //MARK: - Constraints
-    private func makeTitleLabelConstraints() {
+    private func makeTitleLabelConstraints(){
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(32)
-            make.right.equalToSuperview().offset(-32)
-            make.top.equalTo(80)
+            make.top.equalToSuperview().offset(64)
+            make.trailing.equalToSuperview().offset(-32)
+            make.leading.equalToSuperview().offset(32)
+            make.height.equalTo(72)
+        }
+    }
+    
+    private func makeTitleTextFieldConstraints() {
+        titleLTextField.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel).offset(64)
+            make.trailing.equalToSuperview().offset(-32)
+            make.leading.equalToSuperview().offset(32)
+            make.height.equalTo(72)
         }
     }
     
     private func descriptionLabelConstrints() {
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel).offset(64)
+            make.top.equalTo(titleLTextField).offset(80)
             make.trailing.equalToSuperview().offset(-32)
             make.leading.equalToSuperview().offset(32)
             make.height.equalTo(72)
