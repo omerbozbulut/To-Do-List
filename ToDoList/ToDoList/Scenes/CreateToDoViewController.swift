@@ -33,6 +33,19 @@ class CreateToDoViewController: UIViewController {
         
         configureDesign()
         configureConstraints()
+        createButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
+    }
+    
+    @objc func createToDo(){
+        guard let title = titleTextField.text else {return}
+        guard let description = descriptionTextField.text else {return}
+        let date = datePicker.date
+        
+        if !title.isEmpty && !description.isEmpty{
+            toDoLogic.createToDo(title: title, description: description, date: date)
+            dismiss(animated: true, completion: nil)
+        }
+        
     }
 
     private func configureDesign() {
@@ -41,7 +54,6 @@ class CreateToDoViewController: UIViewController {
         titleLabelDesign()
         titleTextFieldDesign()
         descriptionTextFieldDesign()
-        datePickerDesign()
         cancelButtonDesign()
         createButtonDesign()
     }
@@ -84,10 +96,6 @@ class CreateToDoViewController: UIViewController {
         descriptionTextField.leftViewMode = UITextField.ViewMode.always
     }
     
-    private func datePickerDesign() {
-        
-    }
-    
     private func cancelButtonDesign() {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.backgroundColor = .red
@@ -107,8 +115,8 @@ class CreateToDoViewController: UIViewController {
 //MARK: - Constraints
     private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(32)
-            make.right.equalToSuperview().offset(-32)
+            make.leading.equalToSuperview().offset(32)
+            make.trailing.equalToSuperview().offset(-32)
             make.top.equalTo(80)
         }
     }

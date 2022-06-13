@@ -96,7 +96,7 @@ class ToDoListViewController: UIViewController {
         //title
         createToDoButton.setTitleColor(.white, for: .normal)
         createToDoButton.titleLabel?.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)
-        createToDoButton.setTitle("New to do", for: .normal)
+        createToDoButton.setTitle("New To-Do", for: .normal)
         //image
         createToDoButton.setImage(UIImage(systemName: Constants.buttonImageName), for: .normal)
         createToDoButton.setInsets(forContentPadding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10), imageTitlePadding: 15)
@@ -144,7 +144,6 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension ToDoListViewController: ReloadDelegate {
     func refresh() {
-        print("asdadasdasd")
         updateData()
     }
 }

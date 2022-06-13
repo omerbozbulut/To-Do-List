@@ -48,9 +48,10 @@ struct ToDoLogic{
         delegate?.refresh()
     }
     
-    func createToDo(){
-         
-       updateUserDefaults()
+    func createToDo(title: String, description: String, date: Date){
+        let newToDo = ToDo(title: title, description: description, date: date, completed: false)
+        toDoList.append(newToDo)
+        updateUserDefaults()
     }
     
     mutating func updateToDo(_ description: String,_ toDoIndex: Int){

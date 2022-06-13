@@ -8,8 +8,7 @@
 import Foundation
 
 var toDoList: [ToDo] = [
-    ToDo(title: "Markete git", description: "Ekmek, su, kahve al", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false),
-    ToDo(title: "Çamaşırları yıka", description: "note", date: Date(timeIntervalSince1970: 4333446145.0/1000.0), completed: false)]
+    ToDo(title: "Markete git", description: "Ekmek, su, kahve al", date: Date(timeIntervalSince1970: 432233446145.0/1000.0), completed: false)]
 
 struct ToDo: Codable{
     var title: String
