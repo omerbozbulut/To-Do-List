@@ -89,12 +89,16 @@ class ToDoDetailViewController: UIViewController {
     
     private func descriptionLabelDesign() {
         descriptionLabel.text = "Note"
+        descriptionLabel.textColor = .systemIndigo
         descriptionLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 25)
     }
     
     private func descriptionTextFieldDesign() {
         descriptionTextField.text = toDoLogic.getToDo(toDoIndex).description
-        descriptionTextField.backgroundColor = .lightGray
+        descriptionTextField.textColor = .white
+        descriptionTextField.tintColor = .white
+        descriptionTextField.font = .systemFont(ofSize: 22)
+        descriptionTextField.backgroundColor = .systemIndigo
         descriptionTextField.textAlignment = .left
         descriptionTextField.layer.masksToBounds = true
         descriptionTextField.layer.cornerRadius = 10
@@ -104,8 +108,9 @@ class ToDoDetailViewController: UIViewController {
     }
     
     private func dateLabelDesign() {
-        dateLabel.textColor = .red
+        dateLabel.textColor = .systemIndigo
         dateLabel.textAlignment = .right
+        dateLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 19)
         let date = toDoLogic.getToDo(toDoIndex).date
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
         dateLabel.text = dateFormatter.string(from: date)

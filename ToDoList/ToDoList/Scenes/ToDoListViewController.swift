@@ -110,7 +110,7 @@ class ToDoListViewController: UIViewController {
     }
     
     private func titleLabelDesign() {
-        titleLabel.text = "To Do List"
+        titleLabel.text = "To-Do List"
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
         titleLabel.textColor = .white

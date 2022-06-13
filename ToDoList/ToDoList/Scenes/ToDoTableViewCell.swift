@@ -31,7 +31,6 @@ class ToDoTableViewCell: UITableViewCell{
     
     @objc func toDoCompleted() {
         toDoLogic.completeToDo(index)
-        
     }
     
     func configureToDo(toDo: ToDo){
@@ -49,7 +48,7 @@ class ToDoTableViewCell: UITableViewCell{
     private func titleLabelDesign() {
         titleLabel.numberOfLines = 0
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 17)
+        titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 20)
     }
     
     private func completeButtonDesign() {
@@ -84,13 +83,13 @@ class ToDoTableViewCell: UITableViewCell{
     
     private func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(16)
             make.leading.equalTo(completeButton).offset(56)
             make.trailing.equalToSuperview().offset(8)
         }
     }
     
-    private func makeDateLabelConstraints(){
+    private func makeDateLabelConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-16)
             make.trailing.equalToSuperview().offset(-8)

@@ -34,6 +34,7 @@ class CreateToDoViewController: UIViewController {
         configureDesign()
         configureConstraints()
         createButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
     }
     
     @objc func createToDo(){
@@ -45,7 +46,10 @@ class CreateToDoViewController: UIViewController {
             toDoLogic.createToDo(title: title, description: description, date: date)
             dismiss(animated: true, completion: nil)
         }
-        
+    }
+    
+    @objc func turnBack(){
+        dismiss(animated: true, completion: nil)
     }
 
     private func configureDesign() {
@@ -77,8 +81,10 @@ class CreateToDoViewController: UIViewController {
     }
     
     private func titleTextFieldDesign() {
-        titleTextField.placeholder = "Title"
-        titleTextField.backgroundColor = .lightGray
+        titleTextField.textColor = .white
+        titleTextField.tintColor = .white
+        titleTextField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        titleTextField.backgroundColor = .systemIndigo
         titleTextField.textAlignment = .left
         titleTextField.layer.masksToBounds = true
         titleTextField.layer.cornerRadius = 10
@@ -87,8 +93,10 @@ class CreateToDoViewController: UIViewController {
     }
     
     private func descriptionTextFieldDesign() {
-        descriptionTextField.placeholder = "Description"
-        descriptionTextField.backgroundColor = .lightGray
+        descriptionTextField.textColor = .white
+        descriptionTextField.tintColor = .white
+        descriptionTextField.attributedPlaceholder = NSAttributedString(string: "Description", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        descriptionTextField.backgroundColor = .systemIndigo
         descriptionTextField.textAlignment = .left
         descriptionTextField.layer.masksToBounds = true
         descriptionTextField.layer.cornerRadius = 10
