@@ -31,12 +31,20 @@ class ToDoTableViewCell: UITableViewCell {
         
         configureConstraints()
         configureDesign()
-        completeButton.addTarget(self, action: #selector(toDoCompleted), for: .touchUpInside)
+        configureAction()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     @objc func toDoCompleted() {
         toDoLogic.completeToDo(index)
         reloadDelegate?.refresh()
+    }
+    
+    private func configureAction() {
+        completeButton.addTarget(self, action: #selector(toDoCompleted), for: .touchUpInside)
     }
     
     func configureToDo(toDo: ToDo) {
@@ -62,7 +70,6 @@ class ToDoTableViewCell: UITableViewCell {
         completeButton.setTitle("", for: .normal)
         completeButton.tintColor = .black
         completeButton.translatesAutoresizingMaskIntoConstraints = false
-        
     }
     
     private func dateLabelDesign() {
@@ -102,9 +109,4 @@ class ToDoTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-8)
         }
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }

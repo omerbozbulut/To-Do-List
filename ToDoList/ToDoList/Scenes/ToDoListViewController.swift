@@ -35,11 +35,9 @@ class ToDoListViewController: UIViewController {
         view.addSubview(createToDoButton)
         
         configureDesign()
-        makeTitleLabelConstraints()
-        makeCreateToDoButtonConstraints()
-        makeToDoListTableConstraints()
+        configureConstraints()
+        configureAction()
         
-        createToDoButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
     }
     
     @objc func createToDo(){
@@ -50,6 +48,16 @@ class ToDoListViewController: UIViewController {
     
     func updateData(){
         toDoListTable.reloadData()
+    }
+    
+    private func configureConstraints() {
+        makeTitleLabelConstraints()
+        makeCreateToDoButtonConstraints()
+        makeToDoListTableConstraints()
+    }
+    
+    private func configureAction() {
+        createToDoButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
     }
 
 //MARK: - Design
@@ -75,7 +83,7 @@ class ToDoListViewController: UIViewController {
     }
     
     private func titleLabelDesign() {
-        titleLabel.text = "To-Do List"
+        titleLabel.text = Constants.Titles.toDoListSceneTitle
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
         titleLabel.textColor = .white

@@ -14,6 +14,12 @@ struct Constants{
     static let dateFormatString = "yyyy/MM/dd HH:mm"
     static let userDefaultsKey = "toDoList"
     
+    struct Titles{
+        static let createToDoSceneLabel = "Create To-Do"
+        static let toDoListSceneTitle = "To-Do List"
+    }
+    
+    
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"
         static let HelveticaNeueMEDİUM = "HelveticaNeue-medium"

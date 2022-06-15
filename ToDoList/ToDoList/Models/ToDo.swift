@@ -16,7 +16,7 @@ struct ToDo: Codable {
     var date: Date
     var completed: Bool
     
-    init(title:String, description: String, date: Date, completed:Bool) {
+    init(title: String, description: String, date: Date, completed: Bool) {
         self.title = title
         self.description = description
         self.date = date

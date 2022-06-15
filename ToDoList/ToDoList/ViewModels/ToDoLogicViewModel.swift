@@ -16,7 +16,7 @@ struct ToDoLogicViewModel {
         return stringDate
     }
     
-     func getToDos()->[ToDo]? {
+     func getToDos() ->[ToDo]? {
         updateUserDefaults()
          if let data = UserDefaults.standard.value(forKey: Constants.userDefaultsKey) as? Data {
             if let toDos = try? PropertyListDecoder().decode(Array<ToDo>.self, from: data){
@@ -29,7 +29,7 @@ struct ToDoLogicViewModel {
          return nil
     }
     
-    func getToDo(_ index:Int)->ToDo {
+    func getToDo(_ index: Int)->ToDo {
         updateUserDefaults()
         guard let toDos = getToDos() else {return ToDo(title: "Error", description: "To do not found", date: Date.init(timeIntervalSinceNow: 1), completed: false)}
         return toDos[index]

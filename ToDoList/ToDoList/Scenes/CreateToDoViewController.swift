@@ -33,8 +33,7 @@ class CreateToDoViewController: UIViewController {
         
         configureDesign()
         configureConstraints()
-        createButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
-        cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
+        configureAction()
     }
     
     @objc func createToDo() {
@@ -50,6 +49,11 @@ class CreateToDoViewController: UIViewController {
     
     @objc func turnBack() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func configureAction() {
+        createButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
     }
 
     private func configureDesign() {
@@ -73,9 +77,7 @@ class CreateToDoViewController: UIViewController {
     
 //MARK: - Design
     private func titleLabelDesign() {
-        titleLabel.text = "Create To-Do"
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
+        titleLabel.text = Constants.Titles.createToDoSceneLabel
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
     }
