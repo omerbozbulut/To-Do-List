@@ -1,96 +1,23 @@
 //
-//  ToDoDetailViewController.swift
+//  ToDoDetailDesign.swift
 //  ToDoList
 //
-//  Created by omer faruk bozbulut on 7.06.2022.
+//  Created by omer faruk bozbulut on 16.06.2022.
 //
 
 import UIKit
-import SnapKit
 
-class ToDoDetailViewController: UIViewController {
-
-    private let titleLabel = UILabel()
-    private let titleLTextField = UITextField()
-    private let descriptionTextField = UITextField()
-    private let dateLabel = UILabel()
-    private let descriptionLabel = UILabel()
-    private var toDoLogic = ToDoLogicViewModel()
-    private let dateFormatter = DateFormatter()
-    private let cancelButton = UIButton()
-    private let saveButton = UIButton()
-    var toDoIndex = 0
-    
-    override func viewWillAppear(_ animated: Bool) {
-        descriptionTextField.text = toDoLogic.getToDo(toDoIndex).description
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configure()
-    }
-    
-    private func configure() {
-        view.addSubview(titleLabel)
-        view.addSubview(titleLTextField)
-        view.addSubview(descriptionTextField)
-        view.addSubview(dateLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(cancelButton)
-        view.addSubview(saveButton)
-        
-        configureDesign()
-        configureConstraints()
-        configureAction()
-    }
-    
-    @objc func turnBack() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func saveChanges() {
-        if let description = descriptionTextField.text, let title = titleLTextField.text{
-            toDoLogic.updateToDo(title, description, toDoIndex)
-        }
-        dismiss(animated: true)
-    }
-    
-    private func configureAction() {
-        cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
-        saveButton.addTarget(self, action: #selector(saveChanges), for: .touchUpInside)
-    }
-    
-    private func configureConstraints() {
-        makeTitleLabelConstraints()
-        makeTitleTextFieldConstraints()
-        makeDescriptionTextFieldConstraints()
-        makeDateLabelConstraints()
-        cancelButtonConstraints()
-        saveButtonConstraints()
-        descriptionLabelConstrints()
-    }
-    
-    private func configureDesign() {
-        view.backgroundColor = .white
-        
-        titleLabelDesign()
-        titleTextFieldDesign()
-        descriptionLabelDesign()
-        descriptionTextFieldDesign()
-        dateLabelDesign()
-        cancelButtonDesign()
-        saveButtonDesign()
-    }
+extension ToDoDetailViewController {
     
 //MARK: - Design
-    private func titleLabelDesign() {
+    func titleLabelDesign() {
         titleLabel.text = "Edit title"
         titleLabel.textColor = .black
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 25)
     }
     
-    private func titleTextFieldDesign() {
-        titleLTextField.text = toDoLogic.getToDo(toDoIndex).title
+    func titleTextFieldDesign() {
+        titleLTextField.text = viewModel.getToDo(toDoIndex).title
         titleLTextField.textColor = .white
         titleLTextField.tintColor = .white
         titleLTextField.textAlignment = .left
@@ -103,14 +30,14 @@ class ToDoDetailViewController: UIViewController {
         titleLTextField.leftViewMode = UITextField.ViewMode.always
     }
     
-    private func descriptionLabelDesign() {
+    func descriptionLabelDesign() {
         descriptionLabel.text = "Edit note"
         descriptionLabel.textColor = .black
         descriptionLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 25)
     }
     
-    private func descriptionTextFieldDesign() {
-        descriptionTextField.text = toDoLogic.getToDo(toDoIndex).description
+    func descriptionTextFieldDesign() {
+        descriptionTextField.text = viewModel.getToDo(toDoIndex).description
         descriptionTextField.textColor = .white
         descriptionTextField.tintColor = .white
         descriptionTextField.font = .systemFont(ofSize: 22)
@@ -123,15 +50,15 @@ class ToDoDetailViewController: UIViewController {
         descriptionTextField.leftViewMode = UITextField.ViewMode.always
     }
     
-    private func dateLabelDesign() {
+    func dateLabelDesign() {
         dateLabel.textColor = .systemIndigo
         dateLabel.textAlignment = .right
         dateLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueMEDİUM, size: 19)
-        let date = toDoLogic.getToDo(toDoIndex).date
-        dateLabel.text = toDoLogic.dateToString(date: date)
+        let date = viewModel.getToDo(toDoIndex).date
+        dateLabel.text = viewModel.dateToString(date: date)
     }
     
-    private func cancelButtonDesign() {
+    func cancelButtonDesign() {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.backgroundColor = .red
         cancelButton.titleLabel?.textColor = .white
@@ -139,7 +66,7 @@ class ToDoDetailViewController: UIViewController {
         cancelButton.layer.masksToBounds = true
     }
     
-    private func saveButtonDesign() {
+    func saveButtonDesign() {
         saveButton.setTitle("Save", for: .normal)
         saveButton.backgroundColor = .blue
         saveButton.titleLabel?.textColor = .white
@@ -148,7 +75,7 @@ class ToDoDetailViewController: UIViewController {
     }
     
 //MARK: - Constraints
-    private func makeTitleLabelConstraints(){
+    func makeTitleLabelConstraints(){
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(64)
             make.trailing.equalToSuperview().offset(-32)
@@ -157,7 +84,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func makeTitleTextFieldConstraints() {
+    func makeTitleTextFieldConstraints() {
         titleLTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).offset(64)
             make.trailing.equalToSuperview().offset(-32)
@@ -166,7 +93,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func descriptionLabelConstrints() {
+    func descriptionLabelConstrints() {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLTextField).offset(80)
             make.trailing.equalToSuperview().offset(-32)
@@ -175,7 +102,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func makeDescriptionTextFieldConstraints() {
+    func makeDescriptionTextFieldConstraints() {
         descriptionTextField.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel).offset(64)
             make.trailing.equalToSuperview().offset(-32)
@@ -184,7 +111,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func makeDateLabelConstraints() {
+    func makeDateLabelConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(descriptionTextField).offset(80)
             make.right.left.equalToSuperview().offset(-32)
@@ -192,7 +119,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func cancelButtonConstraints() {
+    func cancelButtonConstraints() {
         cancelButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-48)
             make.leading.equalToSuperview().offset(40)
@@ -201,7 +128,7 @@ class ToDoDetailViewController: UIViewController {
         }
     }
     
-    private func saveButtonConstraints() {
+    func saveButtonConstraints() {
         saveButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-48)
             make.trailing.equalToSuperview().offset(-40)
@@ -209,5 +136,4 @@ class ToDoDetailViewController: UIViewController {
             make.height.equalTo(40)
         }
     }
-    
 }

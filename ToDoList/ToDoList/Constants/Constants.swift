@@ -19,7 +19,6 @@ struct Constants{
         static let toDoListSceneTitle = "To-Do List"
     }
     
-    
     struct Fonts{
         static let HelveticaNeueBOLD = "HelveticaNeue-Bold"
         static let HelveticaNeueMEDİUM = "HelveticaNeue-medium"

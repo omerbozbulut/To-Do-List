@@ -1,88 +1,22 @@
 //
-//  CreateToDoViewController.swift
+//  CreateToDoDesign.swift
 //  ToDoList
 //
-//  Created by omer faruk bozbulut on 7.06.2022.
+//  Created by omer faruk bozbulut on 16.06.2022.
 //
 
 import UIKit
 
-class CreateToDoViewController: UIViewController {
-
-    private let titleLabel = UILabel()
-    private let titleTextField = UITextField()
-    private let descriptionTextField = UITextField()
-    private let datePicker = UIDatePicker()
-    private let createButton = UIButton()
-    private let cancelButton = UIButton()
-    var toDoLogic = ToDoLogicViewModel()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configure()
-    }
-    
-    private func configure() {
-        view.addSubview(titleTextField)
-        view.addSubview(descriptionTextField)
-        view.addSubview(titleLabel)
-        view.addSubview(datePicker)
-        view.addSubview(createButton)
-        view.addSubview(cancelButton)
-        
-        configureDesign()
-        configureConstraints()
-        configureAction()
-    }
-    
-    @objc func createToDo() {
-        guard let title = titleTextField.text else {return}
-        guard let description = descriptionTextField.text else {return}
-        let date = datePicker.date
-        
-        if !title.isEmpty && !description.isEmpty{
-            toDoLogic.createToDo(title: title, description: description, date: date)
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    @objc func turnBack() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    private func configureAction() {
-        createButton.addTarget(self, action: #selector(createToDo), for: .touchUpInside)
-        cancelButton.addTarget(self, action: #selector(turnBack), for: .touchUpInside)
-    }
-
-    private func configureDesign() {
-        view.backgroundColor = .white
-        
-        titleLabelDesign()
-        titleTextFieldDesign()
-        descriptionTextFieldDesign()
-        cancelButtonDesign()
-        createButtonDesign()
-    }
-    
-    private func configureConstraints(){
-        makeTitleLabelConstraints()
-        makeTitleTextFieldConstraints()
-        makeDescriptionTextFieldConstraints()
-        makeDatePickerConstraints()
-        makeCancelButtonConstraints()
-        makeCreateButtonConstraints()
-    }
+extension CreateToDoViewController {
     
 //MARK: - Design
-    private func titleLabelDesign() {
+    func titleLabelDesign() {
         titleLabel.text = Constants.Titles.createToDoSceneLabel
         titleLabel.textAlignment = .left
         titleLabel.font = UIFont(name: Constants.Fonts.HelveticaNeueBOLD, size: 25)
     }
     
-    private func titleTextFieldDesign() {
+    func titleTextFieldDesign() {
         titleTextField.textColor = .white
         titleTextField.tintColor = .white
         titleTextField.attributedPlaceholder = NSAttributedString(string: "Title", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -94,7 +28,7 @@ class CreateToDoViewController: UIViewController {
         titleTextField.leftViewMode = UITextField.ViewMode.always
     }
     
-    private func descriptionTextFieldDesign() {
+    func descriptionTextFieldDesign() {
         descriptionTextField.textColor = .white
         descriptionTextField.tintColor = .white
         descriptionTextField.attributedPlaceholder = NSAttributedString(string: "Description", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -106,7 +40,7 @@ class CreateToDoViewController: UIViewController {
         descriptionTextField.leftViewMode = UITextField.ViewMode.always
     }
     
-    private func cancelButtonDesign() {
+    func cancelButtonDesign() {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.backgroundColor = .red
         cancelButton.titleLabel?.textColor = .white
@@ -114,7 +48,7 @@ class CreateToDoViewController: UIViewController {
         cancelButton.layer.masksToBounds = true
     }
     
-    private func createButtonDesign() {
+    func createButtonDesign() {
         createButton.setTitle("Create", for: .normal)
         createButton.backgroundColor = .blue
         createButton.titleLabel?.textColor = .white
@@ -123,7 +57,7 @@ class CreateToDoViewController: UIViewController {
     }
     
 //MARK: - Constraints
-    private func makeTitleLabelConstraints() {
+    func makeTitleLabelConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(32)
             make.trailing.equalToSuperview().offset(-32)
@@ -131,7 +65,7 @@ class CreateToDoViewController: UIViewController {
         }
     }
     
-    private func makeTitleTextFieldConstraints() {
+    func makeTitleTextFieldConstraints() {
         titleTextField.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).offset(64)
             make.trailing.equalToSuperview().offset(-40)
@@ -140,7 +74,7 @@ class CreateToDoViewController: UIViewController {
         }
     }
     
-    private func makeDescriptionTextFieldConstraints() {
+    func makeDescriptionTextFieldConstraints() {
         descriptionTextField.snp.makeConstraints { make in
             make.top.equalTo(titleTextField).offset(72)
             make.trailing.equalToSuperview().offset(-40)
@@ -149,14 +83,14 @@ class CreateToDoViewController: UIViewController {
         }
     }
     
-    private func makeDatePickerConstraints() {
+    func makeDatePickerConstraints() {
         datePicker.snp.makeConstraints { make in
             make.top.equalTo(descriptionTextField).offset(80)
             make.centerX.equalTo(view.center.x)
         }
     }
     
-    private func makeCancelButtonConstraints() {
+    func makeCancelButtonConstraints() {
         cancelButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-48)
             make.leading.equalToSuperview().offset(40)
@@ -165,7 +99,7 @@ class CreateToDoViewController: UIViewController {
         }
     }
     
-    private func makeCreateButtonConstraints() {
+    func makeCreateButtonConstraints() {
         createButton.snp.makeConstraints { make in
             make.bottom.equalToSuperview().offset(-48)
             make.trailing.equalToSuperview().offset(-40)
@@ -173,5 +107,4 @@ class CreateToDoViewController: UIViewController {
             make.height.equalTo(40)
         }
     }
-    
 }

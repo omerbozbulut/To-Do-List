@@ -7,9 +7,6 @@
 
 import Foundation
 
-var toDoList: [ToDo] = [
-    ToDo(title: "Mentörlük toplantısı", description: "Code review", date: Date(timeIntervalSince1970: 1660000000000.0/1000.0), completed: false)]
-
 struct ToDo: Codable {
     var title: String
     var description: String
